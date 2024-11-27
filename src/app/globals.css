@@ -2,20 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-gray-100 text-gray-900;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold text-pretty text-sky-500;
+  }
+
+  h1 {
+    @apply text-3xl leading-10;
+  }
+
+  h2 {
+    @apply text-2xl leading-9;
+  }
+
+  h3 {
+    @apply text-xl leading-7;
+  }
+
+  main {
+    @apply container mx-auto px-4 my-10;
+  }
+
+  table {
+    @apply w-full border-collapse border;
+  }
+
+  thead {
+    @apply bg-gray-800 text-sky-400 font-semibold text-left px-4 py-2;
+  }
+
+  tr>th {
+    @apply px-4 py-1 text-center;
+  }
+
+  tbody {
+    @apply bg-white;
+  }
+
+  tbody>tr {
+    @apply border-b border-gray-300 odd:bg-white even:bg-slate-50;
+  }
+
+  td {
+    @apply px-4 py-0;
+  }
+
+  a {
+    @apply text-blue-500 hover:underline hover:cursor-pointer
+  }
+
+  button {
+    @apply bg-blue-500 text-white px-4 py-2 rounded;
+  }
+
+  button:hover {
+    @apply bg-blue-600;
+  }
 }
