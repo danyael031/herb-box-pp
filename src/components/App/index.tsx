@@ -499,11 +499,11 @@ const App = () => {
           <table>
             <thead>
               <tr>
-                {tableHeaders.map((header) => <th>{header.d}</th>)}
+                {tableHeaders.map((header, index) => <th key={index}>{header.d}</th>)}
               </tr>
             </thead>
             <tbody>
-              {tableRows.map((row: Row) => <TableRow row={row} />)}
+              {tableRows.map((row: Row, index) => <TableRow key={index} row={row} />)}
             </tbody>
           </table>
         </section>
@@ -529,11 +529,11 @@ const App = () => {
             <table>
               <thead>
                 <tr>
-                  {tables[0].headers.map((header) => <th>{header.d}</th>)}
+                  {tables[0].headers.map((header, index) => <th key={index}>{header.d}</th>)}
                 </tr>
               </thead>
               <tbody>
-                {tables[0].rows.map((row: Row) => <TableRow row={row} />)}
+                {tables[0].rows.map((row: Row, index) => <TableRow key={index} row={row} />)}
               </tbody>
             </table>
           </section>
@@ -548,11 +548,11 @@ const App = () => {
               <table>
                 <thead>
                   <tr>
-                    {tables[1].headers.map((header) => <th>{header.d}</th>)}
+                    {tables[1].headers.map((header, index) => <th key={index}>{header.d}</th>)}
                   </tr>
                 </thead>
                 <tbody>
-                  {tables[1].rows.map((row: Row) => <TableRow row={row} />)}
+                  {tables[1].rows.map((row: Row, index) => <TableRow key={index} row={row} />)}
                 </tbody>
               </table>
             </section>
@@ -566,11 +566,11 @@ const App = () => {
               <table>
                 <thead>
                   <tr>
-                    {tables[2].headers.map((header) => <th>{header.d}</th>)}
+                    {tables[2].headers.map((header, index) => <th key={index}>{header.d}</th>)}
                   </tr>
                 </thead>
                 <tbody>
-                  {tables[2].rows.map((row: Row) => <TableRow row={row} />)}
+                  {tables[2].rows.map((row: Row, index) => <TableRow key={index} row={row} />)}
                 </tbody>
               </table>
             </section>
@@ -585,11 +585,11 @@ const App = () => {
             <table>
               <thead>
                 <tr>
-                  {tables[3].headers.map((header) => <th>{header.d}</th>)}
+                  {tables[3].headers.map((header, index) => <th key={index}>{header.d}</th>)}
                 </tr>
               </thead>
               <tbody>
-                {tables[3].rows.map((row: Row) => <TableRow row={row} />)}
+                {tables[3].rows.map((row: Row, index) => <TableRow key={index} row={row} />)}
               </tbody>
             </table>
           </section>

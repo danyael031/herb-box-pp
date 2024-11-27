@@ -24,8 +24,8 @@ const TableRow = (props: TableRowProps) => {
   };
   return (
     <tr>
-      {props.row.map((cell: Cell) => (
-        <td>
+      {props.row.map((cell: Cell, index) => (
+        <td key={index}>
           {(() => {
             if (cell.url)
               return <LinkCell cell={cell} />
