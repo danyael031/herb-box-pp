@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import LinkCell from "./LinkCell";
 import ActionCell from "./ActionCell";
 import DateCell from "./DateCell";
@@ -27,8 +27,7 @@ const TableRow = (props: TableRowProps) => {
       {props.row.map((cell: Cell, index) => (
         <td key={index}>
           {(() => {
-            if (cell.url)
-              return <LinkCell cell={cell} />
+            if (cell.url) return <LinkCell cell={cell} />;
             switch (cell.k) {
               case "actions":
                 return (
@@ -37,19 +36,18 @@ const TableRow = (props: TableRowProps) => {
                   </div>
                 );
               case "heartbeat":
-                return (<DateCell cell={cell} />)
+                return <DateCell cell={cell} />;
               case "chartColor":
                 return (
                   <ColorPickerCell
                     initialColor={cell.d as string}
                     onColorChange={handleColorChange}
                   />
-                )
+                );
               default:
-                return (<TextCell cell={cell} />)
+                return <TextCell cell={cell} />;
             }
-          })()
-          }
+          })()}
         </td>
       ))}
     </tr>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Cell } from "../App";
 
 type DateCellProps = {
@@ -8,9 +8,7 @@ type DateCellProps = {
 const DateCell = ({ cell }: DateCellProps) => {
   return (
     <span>
-      {typeof cell.d === "string"
-        ? new Intl.DateTimeFormat("en-US").format(new Date(cell.d))
-        : ""}
+      {typeof cell.d === "string" ? new Intl.DateTimeFormat("en-US").format(new Date(cell.d)) : ""}
     </span>
   );
 };

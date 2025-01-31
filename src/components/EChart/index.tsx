@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 import * as echarts from "echarts";
 
 interface SeriesData {
@@ -20,8 +20,7 @@ interface EChartProps {
 
 const EChart = (props: EChartProps): JSX.Element => {
   //let chartRef: HTMLDivElement | undefined;
-  const chartRef = useRef<HTMLDivElement>(null)
-
+  const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!chartRef) return;
@@ -74,12 +73,12 @@ const EChart = (props: EChartProps): JSX.Element => {
           focus: "series",
         },
       })) || [
-          {
-            name: "Series 1",
-            type: "line",
-            data: [40, 50, 45, 60],
-          },
-        ],
+        {
+          name: "Series 1",
+          type: "line",
+          data: [40, 50, 45, 60],
+        },
+      ],
     };
 
     chartInstance.setOption(props.options || defaultOptions);
@@ -92,12 +91,7 @@ const EChart = (props: EChartProps): JSX.Element => {
     };
   });
 
-  return (
-    <div
-      ref={chartRef}
-      className="h-96 w-full"
-    ></div>
-  );
+  return <div ref={chartRef} className="h-96 w-full"></div>;
 };
 
 export default EChart;
