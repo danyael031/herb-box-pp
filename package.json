@@ -14,19 +14,21 @@
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
+    "cors": "^2.8.5",
     "echarts": "^5.5.1",
     "js-yaml": "^4.1.0",
     "next": "15.0.1",
-    "next-swagger-doc": "^0.4.1",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.7",
     "@types/yamljs": "^0.2.34",
     "eslint": "^8",

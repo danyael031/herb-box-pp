@@ -7,78 +7,23 @@ datasource db {
   url      = env("DATABASE_URL_SQLite")
 }
 
-// Plant Table (Stores plant data)
-// airHumidity, temperature, humidatyAir
 model Plant {
-  id         Int      @id @default(autoincrement())
-  code       String
-  name       String
-  humidity   Int
-  pin        String
-  interval   Int
-  irrigate   String
-  pump       String
-  chartColor String
-  heartbeat  DateTime
-  actions    Action[]
+  id                Int       @id @default(autoincrement())
+  code              String
+  name              String
+  avgAirHumidity    Int
+  avgGroundHumidity Int
+  avgTemperature    Int
+  timestamp         DateTime
+  History           History[]
 }
 
-// Action Table (Stores available actions for plants) HIstorial sensores
-
-model Action {
-  id       Int      @id @default(autoincrement())
-  plantId  Int
-  action   String
-  label    String
-  Plant    Plant    @relation(fields: [plantId], references: [id])
-}
-
-// Pumps Table (Pump configurations)
-model Pump {
-  id        Int      @id @default(autoincrement())
-  code      String
-  vccPin    String
-  humidity  Int
-  duration  Int
-  actions   PumpAction[]
-}
-
-// Pump Action Table (Actions for pumps)
-model PumpAction {
-  id      Int    @id @default(autoincrement())
-  pumpId  Int
-  action  String
-  label   String
-  Pump    Pump   @relation(fields: [pumpId], references: [id])
-}
-
-// Switches Table (Controls for devices like lamps)
-model Switch {
-  id       Int      @id @default(autoincrement())
-  code     String
-  name     String
-  vccPin   String
-  actions  SwitchAction[]
-}
-
-// Switch Action Table
-model SwitchAction {
-  id        Int      @id @default(autoincrement())
-  switchId  Int
-  action    String
-  label     String
-  Switch    Switch   @relation(fields: [switchId], references: [id])
-}
-
-// Action Stack Table (Logs previous actions)
-model ActionStack {
-  id        Int      @id @default(autoincrement())
-  entryNo   Int
-  action    String
-  name      String
-  pin       String
-  value     Int
-  enum      Int
-  created   DateTime
-  processed DateTime
+model History {
+  id             Int      @id @default(autoincrement())
+  plantId        Int
+  airHumidity    Int
+  groundHumidity Int
+  temperature    Int
+  timestamp      DateTime
+  Plant          Plant    @relation(fields: [plantId], references: [id])
 }
