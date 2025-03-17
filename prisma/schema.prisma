@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL_SQLite")
+}
+
+model Plant {
+  id                Int       @id @default(autoincrement())
+  code              String
+  name              String
+  avgAirHumidity    Int
+  avgGroundHumidity Int
+  avgTemperature    Int
+  timestamp         DateTime
+  History           History[]
+}
+
+model History {
+  id             Int      @id @default(autoincrement())
+  plantId        Int
+  airHumidity    Int
+  groundHumidity Int
+  temperature    Int
+  timestamp      DateTime
+  Plant          Plant    @relation(fields: [plantId], references: [id])
+}

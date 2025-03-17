@@ -5,11 +5,7 @@ type LinkCellProps = {
 };
 
 const LinkCell = ({ cell }: LinkCellProps) => {
-  return (
-    <a href={cell.url}>
-      {typeof cell.d === "string" ? cell.d : JSON.stringify(cell.d)}
-    </a>
-  );
+  return <a href={cell.url}>{typeof cell.d === "string" ? cell.d : JSON.stringify(cell.d)}</a>;
 };
 
 export default LinkCell;

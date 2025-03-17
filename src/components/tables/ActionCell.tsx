@@ -17,20 +17,15 @@ const ActionCell = (props: ActionCellProps) => {
 
   return (
     <>
-      {
-        d.map((action, index) => {
-          return (
-            <button
-              key={index}
-              onClick={action.action === "irrigate" ? toggleIrrigate : toggleOther}
-            >
-              {action.d}
-            </button>
-          )
-        })
-      }
+      {d.map((action, index) => {
+        return (
+          <button key={index} onClick={action.action === "irrigate" ? toggleIrrigate : toggleOther}>
+            {action.d}
+          </button>
+        );
+      })}
     </>
-  )
-}
+  );
+};
 
 export default ActionCell;

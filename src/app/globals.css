@@ -40,7 +40,7 @@
     @apply bg-gray-800 text-sky-400 font-semibold text-left px-4 py-2;
   }
 
-  tr>th {
+  tr > th {
     @apply px-4 py-1 text-center;
   }
 
@@ -48,7 +48,7 @@
     @apply bg-white;
   }
 
-  tbody>tr {
+  tbody > tr {
     @apply border-b border-gray-300 odd:bg-white even:bg-slate-50;
   }
 
@@ -57,7 +57,7 @@
   }
 
   a {
-    @apply text-blue-500 hover:underline hover:cursor-pointer
+    @apply text-blue-500 hover:underline hover:cursor-pointer;
   }
 
   button {

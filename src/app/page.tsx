@@ -1,7 +1,5 @@
-import MainApp from '../components/App';
+import MainApp from "../components/App";
 
 export default function Home() {
-  return (
-    <MainApp />
-  );
+  return <MainApp />;
 }
