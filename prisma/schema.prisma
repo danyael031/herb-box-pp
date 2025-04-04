@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL_SQLite")
 }
 
+enum Action {
+  NONE
+  IRRIGATE
+}
+
 model Plant {
   id                Int       @id @default(autoincrement())
   code              String
@@ -24,6 +29,7 @@ model History {
   airHumidity    Int
   groundHumidity Int
   temperature    Int
-  timestamp      DateTime
+  timestamp      DateTime @default(now())
+  requiredAction Action   @default(NONE)
   Plant          Plant    @relation(fields: [plantId], references: [id])
 }

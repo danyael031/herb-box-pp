@@ -1,35 +1,30 @@
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
-import Cors from "cors";
-import initMiddleware from "../../../../lib/init-middleware";
 const prisma = new PrismaClient();
 
-const cors = initMiddleware(
-  Cors({
-    methods: ["GET", "POST", "OPTIONS"],
-    origin: "*",
-  })
-);
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  await cors(req, res);
   if (req.method === "POST") {
-    const { code, name, avgAirHumidity, avgGroundHumidity, avgTemperature, timestamp } = req.body;
-
     try {
-      const newPlant = await prisma.plant.create({
-        data: {
-          code,
-          name,
-          avgAirHumidity,
-          avgGroundHumidity,
-          avgTemperature,
-          timestamp: new Date(timestamp),
-        },
-      });
+      const { code, name, avgAirHumidity, avgGroundHumidity, avgTemperature } = req.body;
+      console.log("name", name);
+      const newPlant = await prisma.plant
+        .create({
+          data: {
+            code,
+            name,
+            avgAirHumidity,
+            avgGroundHumidity,
+            avgTemperature,
+            timestamp: new Date(),
+          },
+        })
+        .catch((error) => console.log(error));
       res.status(201).json(newPlant);
     } catch (error) {
       res.status(500).json({ error: error });
     }
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 }
