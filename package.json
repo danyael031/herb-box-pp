@@ -10,7 +10,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma-db": "prisma studio",
+    "prisma:migrate": "npx prisma migrate dev --name update_schema",
+    "prisma:generate": "npx prisma generate",
+    "prisma:reset": "npx prisma migrate reset --force"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",

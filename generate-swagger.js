@@ -1,8 +1,12 @@
-const swaggerJsdoc = require("swagger-jsdoc");
-const fs = require("fs");
-const path = require("path");
-const yaml = require("js-yaml"); // ✅ Use `js-yaml` instead of `yamljs`
-const swaggerOptions = require("./lib/swaggerConfig.cjs"); // Import Swagger config
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+import swaggerJsdoc from "swagger-jsdoc";
+import { existsSync, mkdirSync, writeFileSync } from "fs";
+import { dump } from "js-yaml";
+import swaggerOptions from "./lib/swaggerConfig.cjs"; // Import Swagger config
 
 try {
   // Generate Swagger Docs
@@ -14,17 +18,17 @@ try {
   }
 
   // Convert JSON to YAML
-  const yamlSpecs = yaml.dump(specs, { indent: 2, noRefs: true });
+  const yamlSpecs = dump(specs, { indent: 2, noRefs: true });
 
   // Ensure the `docs` directory exists
-  const docsDir = path.join(__dirname, "docs");
-  if (!fs.existsSync(docsDir)) {
-    fs.mkdirSync(docsDir);
+  const docsDir = join(__dirname, "docs");
+  if (!existsSync(docsDir)) {
+    mkdirSync(docsDir);
   }
 
   // Write to `swagger.yaml`
-  const filePath = path.join(docsDir, "swagger.yaml");
-  fs.writeFileSync(filePath, yamlSpecs, "utf8");
+  const filePath = join(docsDir, "swagger.yaml");
+  writeFileSync(filePath, yamlSpecs, "utf8");
 
   console.log("✅ Swagger YAML file generated successfully at docs/swagger.yaml");
 } catch (error) {
