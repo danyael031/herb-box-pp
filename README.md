@@ -22,13 +22,13 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Environment Variables
 
-Generate a `.env.local` file by copying the `.env.example` file:
+Generate a `.env` file by copying the `.env.example` file:
 
 ```sh
-cp .env.example .env.local
+cp .env.example .env
 ```
 
-Add the values to the variables in the `.env.local` file, and they will be automatically loaded when the project is initialized.
+Add the values to the variables in the `.env` file, and they will be automatically loaded when the project is initialized.
 
 Be careful not to add environment variables to the `.env.example` file, as it is being tracked by Git, and we don't want secrets to be accidentally leaked.
 
@@ -36,6 +36,12 @@ Be careful not to add environment variables to the `.env.example` file, as it is
 | Name | Description |
 |---|---|
 | OPENAI_API_KEY | OpenAI platform API Key |
+
+## Simulate connection to the sensors
+
+```sh
+./scripts/simulateHistory.sh
+```
 
 ## Learn More
 
