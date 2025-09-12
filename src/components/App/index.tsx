@@ -67,150 +67,6 @@ const App = () => {
         k: "actions",
       },
     ],
-    [
-      { d: "LEFT", k: "code", url: "#" },
-      { d: "Thyme Thymus", k: "name", url: "#" },
-      { d: "560", k: "humidity" },
-      { d: "A3", k: "pin", url: "#" },
-      { d: "350000", k: "interval", url: "#" },
-      { d: "off", k: "irrigate", url: "#" },
-      { d: "LEFT", k: "pump", url: "#" },
-      { d: "#9B59B6", k: "chartColor" },
-      { d: "12.02.2024 07:30:05", k: "heartbeat", url: "#" },
-      {
-        d: [
-          { action: "irrigate", d: "Irrigate" },
-          { action: "other", d: "Other" },
-        ],
-        k: "actions",
-      },
-    ],
-    [
-      { d: "RIGHT", k: "code", url: "#" },
-      { d: "Sage Salvia", k: "name", url: "#" },
-      { d: "510", k: "humidity" },
-      { d: "A4", k: "pin", url: "#" },
-      { d: "200000", k: "interval", url: "#" },
-      { d: "on", k: "irrigate", url: "#" },
-      { d: "RIGHT", k: "pump", url: "#" },
-      { d: "#F1C40F", k: "chartColor" },
-      { d: "13.02.2024 18:52:19", k: "heartbeat", url: "#" },
-      {
-        d: [
-          { action: "irrigate", d: "Irrigate" },
-          { action: "other", d: "Other" },
-        ],
-        k: "actions",
-      },
-    ],
-    [
-      { d: "LEFT", k: "code", url: "#" },
-      { d: "Oregano Origanum", k: "name", url: "#" },
-      { d: "490", k: "humidity" },
-      { d: "A5", k: "pin", url: "#" },
-      { d: "250000", k: "interval", url: "#" },
-      { d: "off", k: "irrigate", url: "#" },
-      { d: "LEFT", k: "pump", url: "#" },
-      { d: "#E74C3C", k: "chartColor" },
-      { d: "14.02.2024 20:21:35", k: "heartbeat", url: "#" },
-      {
-        d: [
-          { action: "irrigate", d: "Irrigate" },
-          { action: "other", d: "Other" },
-        ],
-        k: "actions",
-      },
-    ],
-    [
-      { d: "RIGHT", k: "code", url: "#" },
-      { d: "Lavender Lavandula", k: "name", url: "#" },
-      { d: "460", k: "humidity" },
-      { d: "A6", k: "pin", url: "#" },
-      { d: "300000", k: "interval", url: "#" },
-      { d: "on", k: "irrigate", url: "#" },
-      { d: "RIGHT", k: "pump", url: "#" },
-      { d: "#3498DB", k: "chartColor" },
-      { d: "15.02.2024 14:13:55", k: "heartbeat", url: "#" },
-      {
-        d: [
-          { action: "irrigate", d: "Irrigate" },
-          { action: "other", d: "Other" },
-        ],
-        k: "actions",
-      },
-    ],
-    [
-      { d: "LEFT", k: "code", url: "#" },
-      { d: "Lemon Balm Melissa", k: "name", url: "#" },
-      { d: "530", k: "humidity" },
-      { d: "A7", k: "pin", url: "#" },
-      { d: "400000", k: "interval", url: "#" },
-      { d: "off", k: "irrigate", url: "#" },
-      { d: "LEFT", k: "pump", url: "#" },
-      { d: "#1ABC9C", k: "chartColor" },
-      { d: "16.02.2024 08:55:20", k: "heartbeat", url: "#" },
-      {
-        d: [
-          { action: "irrigate", d: "Irrigate" },
-          { action: "other", d: "Other" },
-        ],
-        k: "actions",
-      },
-    ],
-    [
-      { d: "RIGHT", k: "code", url: "#" },
-      { d: "Dill Anethum", k: "name", url: "#" },
-      { d: "550", k: "humidity" },
-      { d: "A8", k: "pin", url: "#" },
-      { d: "600000", k: "interval", url: "#" },
-      { d: "on", k: "irrigate", url: "#" },
-      { d: "RIGHT", k: "pump", url: "#" },
-      { d: "#16A085", k: "chartColor" },
-      { d: "17.02.2024 16:40:45", k: "heartbeat", url: "#" },
-      {
-        d: [
-          { action: "irrigate", d: "Irrigate" },
-          { action: "other", d: "Other" },
-        ],
-        k: "actions",
-      },
-    ],
-    [
-      { d: "LEFT", k: "code", url: "#" },
-      { d: "Parsley Petroselinum", k: "name", url: "#" },
-      { d: "600", k: "humidity" },
-      { d: "A9", k: "pin", url: "#" },
-      { d: "550000", k: "interval", url: "#" },
-      { d: "off", k: "irrigate", url: "#" },
-      { d: "LEFT", k: "pump", url: "#" },
-      { d: "#27AE60", k: "chartColor" },
-      { d: "18.02.2024 12:33:27", k: "heartbeat", url: "#" },
-      {
-        d: [
-          { action: "irrigate", d: "Irrigate" },
-          { action: "other", d: "Other" },
-        ],
-        k: "actions",
-      },
-    ],
-    [
-      { d: "RIGHT", k: "code", url: "#" },
-      { d: "Cilantro Coriandrum", k: "name", url: "#" },
-      { d: "580", k: "humidity" },
-      { d: "A10", k: "pin", url: "#" },
-      { d: "250000", k: "interval", url: "#" },
-      { d: "on", k: "irrigate", url: "#" },
-      { d: "RIGHT", k: "pump", url: "#" },
-      { d: "#8E44AD", k: "chartColor" },
-      { d: "19.02.2024 15:10:58", k: "heartbeat", url: "#" },
-      {
-        d: [
-          { action: "irrigate", d: "Irrigate" },
-          { action: "other", d: "Other" },
-        ],
-        k: "actions",
-      },
-    ],
   ];
 
   const pinsTableHeaders = [
@@ -407,14 +263,6 @@ const App = () => {
   const plantHumidityData = {
     mentha: generateRandomNumbers(0, 1000, 4),
     rosmarinus: generateRandomNumbers(0, 1000, 4),
-    thymus: generateRandomNumbers(0, 1000, 4),
-    salvia: generateRandomNumbers(0, 1000, 4),
-    oreganum: generateRandomNumbers(0, 1000, 4),
-    lavandula: generateRandomNumbers(0, 1000, 4),
-    melissa: generateRandomNumbers(0, 1000, 4),
-    anethum: generateRandomNumbers(0, 1000, 4),
-    petroselinum: generateRandomNumbers(0, 1000, 4),
-    coriandrum: generateRandomNumbers(0, 1000, 4),
   };
 
   const time = ["Week 1", "Week 2", "Week 3", "Week 4"];
@@ -430,51 +278,7 @@ const App = () => {
       type: "line",
       data: plantHumidityData.rosmarinus,
     },
-    {
-      name: "Thyme",
-      type: "line",
-      data: plantHumidityData.thymus,
-    },
-    {
-      name: "Sage",
-      type: "line",
-      data: plantHumidityData.salvia,
-    },
-    {
-      name: "Oregano",
-      type: "line",
-      data: plantHumidityData.oreganum,
-    },
-    {
-      name: "Lavender",
-      type: "line",
-      data: plantHumidityData.lavandula,
-    },
-    {
-      name: "Lemon",
-      type: "line",
-      data: plantHumidityData.melissa,
-    },
-    {
-      name: "Dill",
-      type: "line",
-      data: plantHumidityData.anethum,
-    },
-    {
-      name: "Parsley",
-      type: "line",
-      data: plantHumidityData.petroselinum,
-    },
-    {
-      name: "Cilantro",
-      type: "line",
-      data: plantHumidityData.coriandrum,
-    },
   ];
-
-  const handleColorChange = (color: string) => {
-    console.log("Selected Color (rgba):", color);
-  };
 
   return (
     <div>
