@@ -4,7 +4,7 @@ postToHistoryEndpoint(){
   airHumidity=$(( RANDOM % 25 + 50 ))
   groundHumidity=$(( RANDOM % 25 + 50 ))
   temperature=$(( RANDOM % 10 + 25 ))
-  curl --location 'http://localhost:3000/api/history/post' \
+  curl --location 'http://localhost:3000/api/history' \
   --header 'Content-Type: application/json' \
   --data "{
     \"plantId\": 1,
@@ -16,7 +16,7 @@ postToHistoryEndpoint(){
   airHumidity=$(( RANDOM % 25 + 50 ))
   groundHumidity=$(( RANDOM % 25 + 50 ))
   temperature=$(( RANDOM % 10 + 25 ))
-  curl --location 'http://localhost:3000/api/history/post' \
+  curl --location 'http://localhost:3000/api/history' \
   --header 'Content-Type: application/json' \
   --data "{
     \"plantId\": 2,

@@ -1,6 +1,8 @@
 "use client";
 import TableRow from "../tables/TableRow";
 import EChart from "../EChart";
+import { useEffect } from "react";
+import { useAppStore } from "@/store";
 
 export type Cell = {
   k: string;
@@ -18,6 +20,14 @@ interface ISeries {
 }
 
 const App = () => {
+
+  const subscribeUpdates = useAppStore((state)=> state.subscribeUpdates)
+  const plantSensorHistory = useAppStore((state)=> state.plantSensorHistory)
+
+  useEffect(function subscribeToSensorHistoryUpdates(){
+    return subscribeUpdates()
+  },[])
+
   const tableHeaders = [
     { d: "Code", v: "code" },
     { d: "Name", v: "name" },
@@ -295,6 +305,7 @@ const App = () => {
         </div>
       </header>
       <main className="flex flex-col gap-8">
+        <div>{JSON.stringify(plantSensorHistory)}</div>
         <header className="flex gap-4">
           <h2>Plants:</h2>
           <button>Refresh</button>
