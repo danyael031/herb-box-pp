@@ -15,7 +15,7 @@ type Row = Cell[];
 interface ISeries {
   name: string;
   type: "line" | "bar";
-  data: number[];
+  data: Array<Array<number | Date>>;
   stack?: string;
 }
 
@@ -271,11 +271,9 @@ const App = () => {
   }
 
   const plantHumidityData = {
-    mentha: generateRandomNumbers(0, 1000, 4),
-    rosmarinus: generateRandomNumbers(0, 1000, 4),
+    mentha: plantSensorHistory.plant1History.map((ph)=> [ph.timestamp ,ph.groundHumidity]),
+    rosmarinus: plantSensorHistory.plant2History.map((ph)=>[ph.timestamp, ph.groundHumidity]),
   };
-
-  const time = ["Week 1", "Week 2", "Week 3", "Week 4"];
 
   const series: ISeries[] = [
     {
@@ -289,6 +287,7 @@ const App = () => {
       data: plantHumidityData.rosmarinus,
     },
   ];
+
 
   return (
     <div>
@@ -305,7 +304,6 @@ const App = () => {
         </div>
       </header>
       <main className="flex flex-col gap-8">
-        <div>{JSON.stringify(plantSensorHistory)}</div>
         <header className="flex gap-4">
           <h2>Plants:</h2>
           <button>Refresh</button>
@@ -330,7 +328,6 @@ const App = () => {
         <section>
           <EChart
             title="Plant Humidity Over Time"
-            xAxisData={time}
             series={series}
             width="800px"
             height="300px"
