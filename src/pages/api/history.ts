@@ -23,7 +23,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   if (req.method === "POST") {
     const { plantId, airHumidity, groundHumidity, temperature } = req.body;
-    console.log("req", { req: req.body, res });
     try {
       const observedPlant = await prisma.plant.findUnique({ where: { id: plantId } });
       if (!observedPlant) {
