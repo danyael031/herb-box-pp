@@ -1,11 +1,28 @@
-import { PrismaClient, Action } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
+import { PrismaClient, Action } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === "GET") {
+    try {
+      const plant1History_promise = prisma.history.findMany({where: {plantId: 1}, take: 20, orderBy : {timestamp: 'desc'} });
+      const plant2History_promise = prisma.history.findMany({where: {plantId: 2}, take: 20, orderBy : {timestamp: 'desc'} });
+
+      const responses = await Promise.all([plant1History_promise, plant2History_promise])
+      const history = {
+        plant1History: responses[0],
+        plant2History: responses[1]
+      }
+
+      res.status(200).json(history);
+    } catch (error) {
+      res.status(500).json({ error: error });
+    }
+  } 
+  
   if (req.method === "POST") {
     const { plantId, airHumidity, groundHumidity, temperature } = req.body;
-    console.log("req", { req: req.body, res });
     try {
       const observedPlant = await prisma.plant.findUnique({ where: { id: plantId } });
       if (!observedPlant) {

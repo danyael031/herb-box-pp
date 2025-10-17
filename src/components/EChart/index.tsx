@@ -4,13 +4,13 @@ import * as echarts from "echarts";
 interface SeriesData {
   name: string;
   type: "line" | "bar"; // Extend this with more chart types if needed
-  data: number[];
+  data: Array<Array<number | Date>>;
   stack?: string;
 }
 
 interface EChartProps {
   title?: string;
-  xAxisData?: string[];
+  xAxisData?: number[];
   series?: SeriesData[];
   options?: echarts.EChartsOption;
   width?: string;
@@ -57,8 +57,7 @@ const EChart = (props: EChartProps): JSX.Element => {
         containLabel: true,
       },
       xAxis: {
-        type: "category",
-        data: props.xAxisData || ["Week 1", "Week 2", "Week 3", "Week 4"],
+        type: "time",
       },
       yAxis: {
         type: "value",
@@ -81,7 +80,7 @@ const EChart = (props: EChartProps): JSX.Element => {
       ],
     };
 
-    chartInstance.setOption(props.options || defaultOptions);
+    chartInstance.setOption(props.options || defaultOptions, false);
     window.addEventListener("resize", resizeChart);
     return () => {
       if (chartInstance) {
