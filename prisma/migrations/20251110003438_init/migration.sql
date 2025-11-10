@@ -16,6 +16,7 @@ CREATE TABLE "History" (
     "airHumidity" INTEGER NOT NULL,
     "groundHumidity" INTEGER NOT NULL,
     "temperature" INTEGER NOT NULL,
-    "timestamp" DATETIME NOT NULL,
+    "timestamp" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "requiredAction" TEXT NOT NULL DEFAULT 'NONE',
     CONSTRAINT "History_plantId_fkey" FOREIGN KEY ("plantId") REFERENCES "Plant" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );

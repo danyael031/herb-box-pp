@@ -1,28 +1,15 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Herb Box ++
 
-First, run the development server:
+## Initial setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Install node dependencies:
+
+```sh
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Environment Variables
-
-Generate a `.env` file by copying the `.env.example` file:
+Create `.env` file to setup environment variables:
 
 ```sh
 cp .env.example .env
@@ -30,30 +17,41 @@ cp .env.example .env
 
 Add the values to the variables in the `.env` file, and they will be automatically loaded when the project is initialized.
 
+Generate prisma client: 
+
+```sh
+npm run prisma:generate
+```
+
+Initialize the db:
+
+```sh
+npx prisma migrate dev
+```
+
+Run the development server:
+
+```sh
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Environment Variables
+
+The environment variables are automatically loaded when the project is initialized and when using
+the `prisma` commands.
+
 Be careful not to add environment variables to the `.env.example` file, as it is being tracked by Git, and we don't want secrets to be accidentally leaked.
 
-
-| Name | Description |
-|---|---|
-| OPENAI_API_KEY | OpenAI platform API Key |
+| Name                 | Description                    |
+|----------------------|--------------------------------|
+| OPENAI_API_KEY       | OpenAI platform API Key        |
+| DATABASE_URL_SQLite  | SQLite db file path (Prisma)   |
+| SWAGGER_API_DOC_PATH | Swagger API documentation path |
 
 ## Simulate connection to the sensors
 
 ```sh
 ./scripts/simulateHistory.sh
 ```
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

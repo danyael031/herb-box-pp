@@ -16,6 +16,9 @@
     "prisma:generate": "npx prisma generate",
     "prisma:reset": "npx prisma migrate reset --force"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
     "@langchain/community": "^0.3.49",
     "@langchain/core": "^0.3.65",
@@ -51,6 +54,7 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   },
   "overrides": {
