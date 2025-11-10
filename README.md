@@ -17,6 +17,12 @@ cp .env.example .env
 
 Add the values to the variables in the `.env` file, and they will be automatically loaded when the project is initialized.
 
+Generate prisma client: 
+
+```sh
+npm run prisma:generate
+```
+
 Initialize the db:
 
 ```sh
