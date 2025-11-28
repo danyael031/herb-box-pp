@@ -25,6 +25,7 @@
     "@langchain/langgraph": "^0.3.10",
     "@langchain/openai": "^0.6.2",
     "@prisma/client": "^6.2.1",
+    "ask-sdk": "^2.14.0",
     "axios": "^1.12.2",
     "cors": "^2.8.5",
     "echarts": "^5.5.1",
