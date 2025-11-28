@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "~22.11.0",
-    "npm": "~10.9.0"
+    "node": "~24.11.0",
+    "npm": "~11.6.1"
   },
   "scripts": {
     "dev": "next dev --turbopack",
@@ -26,6 +26,7 @@
     "@langchain/openai": "^0.6.2",
     "@prisma/client": "^6.2.1",
     "ask-sdk": "^2.14.0",
+    "ask-sdk-express-adapter": "^2.14.0",
     "axios": "^1.12.2",
     "cors": "^2.8.5",
     "echarts": "^5.5.1",

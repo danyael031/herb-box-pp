@@ -4,6 +4,7 @@ import {
   RequestHandler,
   SkillBuilders,
 } from 'ask-sdk-core';
+import { CustomSkill } from 'ask-sdk-core/dist/skill/CustomSkill';
 import {
   Response,
   SessionEndedRequest,
@@ -13,12 +14,12 @@ import {
 
 //https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-nodejs/host-web-service.html
 
-const LaunchRequestHandler : RequestHandler = {
-  canHandle(handlerInput : HandlerInput) : boolean {
+const LaunchRequestHandler: RequestHandler = {
+  canHandle(handlerInput: HandlerInput): boolean {
     const request = handlerInput.requestEnvelope.request;
-    return request.type === 'LaunchRequest';        
+    return request.type === 'LaunchRequest';
   },
-  handle(handlerInput : HandlerInput) : Response {
+  handle(handlerInput: HandlerInput): Response {
     const speechText = 'Welcome to your SDK weather skill. Ask me the weather!';
 
     return handlerInput.responseBuilder
@@ -29,13 +30,13 @@ const LaunchRequestHandler : RequestHandler = {
   },
 };
 
-const AskWeatherIntentHandler : RequestHandler = {
-  canHandle(handlerInput : HandlerInput) : boolean {
-    const request = handlerInput.requestEnvelope.request;  
+const AskWeatherIntentHandler: RequestHandler = {
+  canHandle(handlerInput: HandlerInput): boolean {
+    const request = handlerInput.requestEnvelope.request;
     return request.type === 'IntentRequest'
       && request.intent.name === 'AskWeatherIntent';
   },
-  handle(handlerInput : HandlerInput) : Response {
+  handle(handlerInput: HandlerInput): Response {
     const speechText = 'The weather today is sunny.';
 
     return handlerInput.responseBuilder
@@ -45,13 +46,13 @@ const AskWeatherIntentHandler : RequestHandler = {
   },
 };
 
-const HelpIntentHandler : RequestHandler = {
-  canHandle(handlerInput : HandlerInput) : boolean {
-    const request = handlerInput.requestEnvelope.request;    
+const HelpIntentHandler: RequestHandler = {
+  canHandle(handlerInput: HandlerInput): boolean {
+    const request = handlerInput.requestEnvelope.request;
     return request.type === 'IntentRequest'
       && request.intent.name === 'AMAZON.HelpIntent';
   },
-  handle(handlerInput : HandlerInput) : Response {
+  handle(handlerInput: HandlerInput): Response {
     const speechText = 'You can ask me the weather!';
 
     return handlerInput.responseBuilder
@@ -62,41 +63,41 @@ const HelpIntentHandler : RequestHandler = {
   },
 };
 
-const CancelAndStopIntentHandler : RequestHandler = {
-  canHandle(handlerInput : HandlerInput) : boolean {
+const CancelAndStopIntentHandler: RequestHandler = {
+  canHandle(handlerInput: HandlerInput): boolean {
     const request = handlerInput.requestEnvelope.request;
     return request.type === 'IntentRequest'
       && (request.intent.name === 'AMAZON.CancelIntent'
-         || request.intent.name === 'AMAZON.StopIntent');
+        || request.intent.name === 'AMAZON.StopIntent');
   },
-  handle(handlerInput : HandlerInput) : Response {
+  handle(handlerInput: HandlerInput): Response {
     const speechText = 'Goodbye!';
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .withSimpleCard('Goodbye!', speechText)
-      .withShouldEndSession(true)      
+      .withShouldEndSession(true)
       .getResponse();
   },
 };
 
-const SessionEndedRequestHandler : RequestHandler = {
-  canHandle(handlerInput : HandlerInput) : boolean {
-    const request = handlerInput.requestEnvelope.request;    
+const SessionEndedRequestHandler: RequestHandler = {
+  canHandle(handlerInput: HandlerInput): boolean {
+    const request = handlerInput.requestEnvelope.request;
     return request.type === 'SessionEndedRequest';
   },
-  handle(handlerInput : HandlerInput) : Response {
+  handle(handlerInput: HandlerInput): Response {
     console.log(`Session ended with reason: ${(handlerInput.requestEnvelope.request as SessionEndedRequest).reason}`);
 
     return handlerInput.responseBuilder.getResponse();
   },
 };
 
-const ErrorHandler : ErrorHandler = {
-  canHandle(handlerInput : HandlerInput, error : Error ) : boolean {
+const CustomErrorHandler: ErrorHandler = {
+  canHandle(handlerInput: HandlerInput, error: Error): boolean {
     return true;
   },
-  handle(handlerInput : HandlerInput, error : Error) : Response {
+  handle(handlerInput: HandlerInput, error: Error): Response {
     console.log(`Error handled: ${error.message}`);
 
     return handlerInput.responseBuilder
@@ -105,3 +106,14 @@ const ErrorHandler : ErrorHandler = {
       .getResponse();
   }
 };
+
+export const PlantitaSkill: CustomSkill = SkillBuilders.custom()
+  .addRequestHandlers(
+    LaunchRequestHandler,
+    AskWeatherIntentHandler,
+    HelpIntentHandler,
+    CancelAndStopIntentHandler,
+    SessionEndedRequestHandler,
+  )
+  .addErrorHandlers(CustomErrorHandler)
+  .create();
