@@ -9,6 +9,11 @@ import {
   Response,
   SessionEndedRequest,
 } from 'ask-sdk-model';
+import { PrismaClient } from "@prisma/client";
+import { HumanMessage, SystemMessage } from "@langchain/core/messages";
+import { agentApp } from "@/agentApp";
+
+const prisma = new PrismaClient();
 
 //https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-nodejs/develop-your-first-skill.html
 
@@ -20,12 +25,56 @@ const LaunchRequestHandler: RequestHandler = {
     return request.type === 'LaunchRequest';
   },
   handle(handlerInput: HandlerInput): Response {
-    const speechText = 'Welcome to your SDK weather skill. Ask me the weather!';
+    const speechText = 'Hola, soy tu herb box plus plus. Puedes preguntarme el estado de las plantitas.';
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Welcome to your SDK weather skill. Ask me the weather!', speechText)
+      .withSimpleCard('Hola, soy tu herb box plus plus. Puedes preguntarme el estado de las plantitas.', speechText)
+      .getResponse();
+  },
+};
+
+const PlantStatusIntentHandler: RequestHandler = {
+  canHandle(handlerInput: HandlerInput): boolean {
+    const request = handlerInput.requestEnvelope.request;
+    return request.type === 'IntentRequest'
+      && request.intent.name === 'PlantStatusIntent';
+  },
+  async handle(handlerInput: HandlerInput): Promise<Response> {
+    let speechText = 'Default message';
+
+        const historyData = await prisma.history.findMany({where: {plantId: 1}, take: 1, orderBy : {timestamp: 'desc'} })
+    
+        if(historyData.length === 0){
+          throw new Error("No info")
+        }
+    
+        const sensors = historyData[0]
+    
+        const sensorsValues = {
+          temperature: `${sensors.temperature}`,
+          ambient_humidity: `${sensors.airHumidity}%`,
+          soil_humidity: `${sensors.groundHumidity}%`,
+        }
+    
+        const systemInputSensors = `
+    Entrada:
+    
+    Temperatura: ${sensorsValues.temperature}
+    Humedad ambiental: ${sensorsValues.ambient_humidity}
+    Humedad de tierra: ${sensorsValues.soil_humidity}
+        `
+    
+        const agentFinalState = await agentApp.invoke(
+          { messages: [new SystemMessage(systemInputSensors) ,new HumanMessage("Hola plantita, cómo estás?")] },
+          { configurable: { thread_id: "default"} },
+        );
+    speechText = agentFinalState.messages[agentFinalState.messages.length - 1].content.toString();
+    console.log(speechText)
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
       .getResponse();
   },
 };
@@ -109,6 +158,7 @@ const CustomErrorHandler: ErrorHandler = {
 
 export const PlantitaSkill: CustomSkill = SkillBuilders.custom()
   .addRequestHandlers(
+    PlantStatusIntentHandler,
     LaunchRequestHandler,
     AskWeatherIntentHandler,
     HelpIntentHandler,
