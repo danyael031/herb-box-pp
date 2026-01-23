@@ -9,11 +9,9 @@ import {
   Response,
   SessionEndedRequest,
 } from 'ask-sdk-model';
-import { PrismaClient } from "@prisma/client";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import { agentApp } from "@/agentApp";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/utils/prisma"
 
 //https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-nodejs/develop-your-first-skill.html
 

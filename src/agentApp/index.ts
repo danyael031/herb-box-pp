@@ -3,6 +3,7 @@ import { ChatOpenAI } from "@langchain/openai";
 import { MemorySaver } from "@langchain/langgraph";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { PROMPT_PLANT_ES } from "@/promts/plantita";
+import { plantSensors } from "./tools/sensors";
 
 const agentModel = new ChatOpenAI({ temperature: 0.5 });
 
@@ -10,7 +11,7 @@ const agentModel = new ChatOpenAI({ temperature: 0.5 });
 const agentCheckpointer = new MemorySaver();
 export const agentApp = createReactAgent({
   llm: agentModel,
-  tools: [],
+  tools: [plantSensors],
   prompt: PROMPT_PLANT_ES,
   checkpointSaver: agentCheckpointer,
 });

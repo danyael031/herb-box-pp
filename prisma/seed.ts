@@ -1,7 +1,7 @@
 // Seed setup based on:
 // https://www.prisma.io/docs/orm/prisma-migrate/workflows/seeding
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import { prisma } from "@/utils/prisma"
+
 async function main() {
   const plants = await prisma.plant.createMany({
     data: [
