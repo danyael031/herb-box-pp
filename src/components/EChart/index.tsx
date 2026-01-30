@@ -18,7 +18,7 @@ interface EChartProps {
   colors: string[];
 }
 
-const EChart = (props: EChartProps): JSX.Element => {
+const EChart = (props: EChartProps): React.ReactNode => {
   //let chartRef: HTMLDivElement | undefined;
   const chartRef = useRef<HTMLDivElement>(null);
 
