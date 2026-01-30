@@ -21,12 +21,12 @@ interface ISeries {
 
 const App = () => {
 
-  const subscribeUpdates = useAppStore((state)=> state.subscribeUpdates)
-  const plantSensorHistory = useAppStore((state)=> state.plantSensorHistory)
+  const subscribeUpdates = useAppStore((state) => state.subscribeUpdates)
+  const plantSensorHistory = useAppStore((state) => state.plantSensorHistory)
 
-  useEffect(function subscribeToSensorHistoryUpdates(){
+  useEffect(function subscribeToSensorHistoryUpdates() {
     return subscribeUpdates()
-  },[])
+  }, [])
 
   const tableHeaders = [
     { d: "Code", v: "code" },
@@ -40,7 +40,7 @@ const App = () => {
     { d: "Heartbeat", v: "heartbeat" },
     { d: "Actions", v: "actions" },
   ];
-  let tableRows = [
+  const tableRows = [
     [
       { d: "LEFT", k: "code", url: "#" },
       { d: "Mint Mentha", k: "name", url: "#" },
@@ -259,20 +259,20 @@ const App = () => {
     },
   ];
 
-  function generateRandomNumbers(min: number, max: number, numItems: number) {
-    const randomNumbers = [];
+  //function generateRandomNumbers(min: number, max: number, numItems: number) {
+  //  const randomNumbers = [];
 
-    for (let i = 0; i < numItems; i++) {
-      const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-      randomNumbers.push(randomNum);
-    }
+  //  for (let i = 0; i < numItems; i++) {
+  //    const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+  //    randomNumbers.push(randomNum);
+  //  }
 
-    return randomNumbers;
-  }
+  //  return randomNumbers;
+  //}
 
   const plantHumidityData = {
-    mentha: plantSensorHistory.plant1History.map((ph)=> [ph.timestamp ,ph.groundHumidity]),
-    rosmarinus: plantSensorHistory.plant2History.map((ph)=>[ph.timestamp, ph.groundHumidity]),
+    mentha: plantSensorHistory.plant1History.map((ph) => [ph.timestamp, ph.groundHumidity]),
+    rosmarinus: plantSensorHistory.plant2History.map((ph) => [ph.timestamp, ph.groundHumidity]),
   };
 
   const series: ISeries[] = [

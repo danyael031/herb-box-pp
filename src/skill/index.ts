@@ -42,32 +42,32 @@ const PlantStatusIntentHandler: RequestHandler = {
   async handle(handlerInput: HandlerInput): Promise<Response> {
     let speechText = 'Default message';
 
-        const historyData = await prisma.history.findMany({where: {plantId: 1}, take: 1, orderBy : {timestamp: 'desc'} })
-    
-        if(historyData.length === 0){
-          throw new Error("No info")
-        }
-    
-        const sensors = historyData[0]
-    
-        const sensorsValues = {
-          temperature: `${sensors.temperature}`,
-          ambient_humidity: `${sensors.airHumidity}%`,
-          soil_humidity: `${sensors.groundHumidity}%`,
-        }
-    
-        const systemInputSensors = `
+    const historyData = await prisma.history.findMany({ where: { plantId: 1 }, take: 1, orderBy: { timestamp: 'desc' } })
+
+    if (historyData.length === 0) {
+      throw new Error("No info")
+    }
+
+    const sensors = historyData[0]
+
+    const sensorsValues = {
+      temperature: `${sensors.temperature}`,
+      ambient_humidity: `${sensors.airHumidity}%`,
+      soil_humidity: `${sensors.groundHumidity}%`,
+    }
+
+    const systemInputSensors = `
     Entrada:
     
     Temperatura: ${sensorsValues.temperature}
     Humedad ambiental: ${sensorsValues.ambient_humidity}
     Humedad de tierra: ${sensorsValues.soil_humidity}
         `
-    
-        const agentFinalState = await agentApp.invoke(
-          { messages: [new SystemMessage(systemInputSensors) ,new HumanMessage("Hola plantita, cómo estás?")] },
-          { configurable: { thread_id: "default"} },
-        );
+
+    const agentFinalState = await agentApp.invoke(
+      { messages: [new SystemMessage(systemInputSensors), new HumanMessage("Hola plantita, cómo estás?")] },
+      { configurable: { thread_id: "default" } },
+    );
     speechText = agentFinalState.messages[agentFinalState.messages.length - 1].content.toString();
     console.log(speechText)
 
@@ -141,7 +141,7 @@ const SessionEndedRequestHandler: RequestHandler = {
 };
 
 const CustomErrorHandler: ErrorHandler = {
-  canHandle(handlerInput: HandlerInput, error: Error): boolean {
+  canHandle(/*handlerInput: HandlerInput, error: Error*/): boolean {
     return true;
   },
   handle(handlerInput: HandlerInput, error: Error): Response {
