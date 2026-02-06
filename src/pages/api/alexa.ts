@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PlantitaSkill } from "../../skill";
-import { SkillRequestSignatureVerifier, TimestampVerifier } from 'ask-sdk-express-adapter';
+//import { SkillRequestSignatureVerifier, TimestampVerifier } from 'ask-sdk-express-adapter';
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if(req.method === 'POST'){
+  if (req.method === 'POST') {
     //const rawBody = await req;
     //const headers: Record<string, string> = {
     //  'signature': req.headers.get('signature') || '',
